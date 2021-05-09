@@ -13,9 +13,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        resetButton.isHidden = true
-        self.One.setTitle("X", for: .normal)
-        // Do any additional setup after loading the view.
+        refreshView()
     }
     @IBOutlet weak var WinnerLable: UILabel!
     
@@ -34,7 +32,8 @@ class ViewController: UIViewController {
     @IBAction func resetPressed(_ sender: UIButton) {
         
         
-        refreshView()
+        viewDidLoad()
+        print("Reset")
       
         
     }
@@ -51,10 +50,7 @@ class ViewController: UIViewController {
     
     
     func placeingObject(with sender:UIButton){
-        if isGameOver{
-            refreshView()
-        }else{
-            print(sender.titleLabel?.text)
+        if isGameOver{}else{
             if sender.titleLabel?.text == nil {
                 if self.player==1{
                     sender.setTitleColor(.white, for: .normal)
@@ -74,11 +70,11 @@ class ViewController: UIViewController {
     
     func refreshView(){
 
-        DispatchQueue.main.async {
+        
             self.isGameOver = false
-            self.One.setTitle(nil, for: .normal)
-            self.Two.setTitle(nil, for: .normal)
-            self.Three.setTitle("", for: .normal)
+            self.One.setTitle("", for: .normal)
+            self.Two.setTitle("", for: .normal)
+            self.Three.setTitle(nil, for: .normal)
             self.Four.setTitle(nil, for: .normal)
             self.Five.setTitle(nil, for: .normal)
             self.Six.setTitle(nil, for: .normal)
@@ -89,7 +85,7 @@ class ViewController: UIViewController {
             self.WinnerLable.text=""
             self.player=1
             self.resetButton.isHidden=true
-        }
+        
 
     }
 
